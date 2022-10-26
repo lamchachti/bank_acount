@@ -11,6 +11,15 @@ public class CompteBancaire {
         this.nom = nom;
         this.numero=++nbreComptes;
     }
+    // interractive constructor
+    public CompteBancaire() {
+         Scanner scanner=new Scanner(System.in);
+         //String  input_user="";
+        System.out.println("Enter votre nom :") ;
+        this.nom= scanner.next();
+        this.solde=0.0;
+        this.numero=++nbreComptes;
+    }
 
     public String getNom() {
         return nom;
@@ -83,12 +92,12 @@ public class CompteBancaire {
     // Le men des Operations
     public void menu(){
 
-        System.out.println("***************** Le menu *****************************");
+        System.out.println("\n***************** Le menu du compte num°"+this.getNumero()+"*****************************\n");
         System.out.println("afficher .... a");
         System.out.println("Verser .......v");
         System.out.println("Retirer.......r");
         System.out.println("Quiter........q");
-        System.out.println("********************************************************");
+        System.out.println("\n********************************************************\n");
 
 
     }
@@ -100,19 +109,22 @@ public class CompteBancaire {
             this.menu();
             System.out.println("Saisir l'operation ! :");
             choix=scanner.next().charAt(0);
-            switch (choix){
+            switch (choix) {
                 case 'a':
                     System.out.println(this);
                     break;
-                case 'v':this.verser(); break;
-                case 'r':this.retirer(); break;
-                case 'q': break;
+                case 'v':
+                    this.verser();
+                    break;
+                case 'r':
+                    this.retirer();
+                    break;
+                case 'q':
+                    break;
                 default:
                     System.out.println("Operation  Invalide !!!");
 
             }
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
         }while (choix!='q');
     }
 }
